@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+
+<html>
+
+	<head>
+
+		<title>EpicAdventure</title>
+
+	</head>
+
+
+	<body>
+
+		
+
+		<div id="scene">
+
+			<img id="troll" src="troll.png">
+
+			<img id="hero" src="hero.png">
+
+			<p id="situation"><button onclick="attack()">Attack</button><button onclick="defend()">Defend</button></p>
+
+		</div>
+
+		<div id="right_border"> </div>
+
+
+			
+
+		</div>
+
+		<style>
+
+			button {
+
+				font-size: 24px;
+				opacity: .7;
+				border: none;
+				margin-left: 20px;
+				border-radius: 5px;
+				width: 100px;
+			}
+
+			button:hover {
+
+				opacity: 1;
+
+			}
+
+			#troll {
+
+				position: absolute;
+				left: 322px;
+				top: 0px;
+				opacity: 1;
+			}
+
+			#hero {
+
+				position: absolute;
+				left: 20px;
+				top: 140px;
+			}
+
+			#right_border {
+
+				position: absolute;
+				top: 20px;
+				left: 731px;
+				background-color: black;
+				width: 50px;
+				height: 400px;
+				opacity: 1;
+
+			}
+		
+			body {
+
+				font-size: 20px;
+				background-color: black;
+				color: white;
+				font-family: Tahoma;
+			}
+
+			h1 {
+
+				font-family: Papyrus;
+				font-size: 80px;
+				padding: 0 0 0 0;
+				margin: 0 0 0 0;
+
+				position: absolute;
+				left: 80px;
+			}
+
+			a {
+
+				color: white;
+				text-decoration: none;
+			}
+
+			a:hover {
+
+				text-decoration: underline;
+			}
+
+			#scene {
+
+				background: url("chose_fight.png") no-repeat;
+				height: 400px;
+				width: 711px;
+
+				position: absolute;
+				top: 20px;
+				left: 20px;
+			}
+
+			#situation {
+
+				position: absolute;
+				top: 310px;
+				left: 20px;
+				padding: 15px 15px 15px 15px;
+
+
+				background-color: rgba(0,0,0,.5);
+				width: 640px;
+				text-align: center;
+			}
+
+			#run {
+
+
+
+				position: absolute;
+				left: 20px;
+				top: 20px;
+
+				width: 250px;
+				height: 300px;
+
+				opacity: 0;
+			}
+
+			#run:hover {
+
+				background-color: rgba(256,256,256,.3);
+
+				opacity: 1;
+			}
+
+			#fight {
+
+				position: absolute;
+
+				left: 420px;
+				top: 20px;
+
+				width: 240px;
+				height: 300px;
+
+				opacity: 0;
+			}
+
+			#fight:hover {
+
+				background-color: rgba(256,256,256,.3);
+
+				opacity: 1;
+			}
+
+		</style>
+
+		<script>
+			
+
+			var hero = document.getElementById('hero');
+			var troll = document.getElementById('troll');
+
+			var moveHero = function(){
+
+				hero.style.left = '50px';
+				var moveTrollSoon = setTimeout(moveTroll,300);
+
+				var move_hero_back = function(){
+
+					hero.style.left = '20px';
+				}
+
+				var back_soon = setTimeout(move_hero_back,400);
+			}
+
+			var moveTroll = function(){
+
+				//troll.style.left = '292px';
+				console.log('did it');
+				troll_flicker();
+			}
+
+			
+
+			
+
+			var move_to = function(element,position){
+
+				element.style.left = position + 'px';
+
+			} 
+
+			var fade = function(element,opacity){
+
+				element.style.opacity = opacity;
+			}
+
+			var troll_opacity = 1;
+			var troll_flicker_count = 0;
+
+			var troll_flicker = function(){
+
+
+
+					if(troll_opacity == 1){
+
+						troll_opacity = .5;
+					}
+					else{
+
+						troll_opacity = 1;
+					}
+
+					troll.style.opacity = troll_opacity;
+
+					troll_flicker_count = troll_flicker_count + 1;
+
+					console.log(troll_flicker_count);
+
+
+					if(troll_flicker_count > 5){
+
+
+						troll_flicker_count = 0;
+						document.getElementById('situation').style.display = '';
+
+
+					}
+					else{
+
+						var continue_flicker = setTimeout(troll_flicker, 80);
+
+					}
+
+			}
+
+			var attack = function(){
+
+				document.getElementById('situation').style.display = 'none';
+
+				var moveHeroSoon = setTimeout(moveHero,300);
+			}
+
+		</script>
+
+
+	</body>
+
+
+
+</html>
+
+
